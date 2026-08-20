@@ -1,0 +1,29 @@
+{
+    "states_list": [
+        [
+            -182300414.23265108,
+            -313154061.48198503,
+            -176091177.2859263
+        ],
+        [
+            852.6354500991087,
+            -426.0619658015076,
+            -181.2127243998987
+        ],
+        [
+            -182278330.63209534,
+            -313124013.84768677,
+            -176078147.92603302
+        ],
+        [
+            852.6304739411516,
+            -426.05548126050417,
+            -181.20957309648657
+        ]
+    ],
+    "name": "LUNA",
+    "explanation": "the list contains 4 items. index 0 and 1 contain the pos amd vel vectors relative EMB while index 2 and 3 contain the pos and vel states relative geocenter respectively.",
+    "time_unix": 1787238730.6713312,
+    "time_simple": "Thu Aug 20 18:12:10 2026",
+    "units": "m and m/s"
+}
