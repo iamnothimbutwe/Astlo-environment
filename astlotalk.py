@@ -19,7 +19,7 @@ def talk(name: str=None,formatt: str='json'):
         return 'name cannot be none'
     
     asthor = Asho()
-    now = datetime.now(timezone.utc) #universal timezone
+    now_print = datetime.now(timezone.utc) #universal timezone
     count = 0
 
     if (name=='moon' or name=='luna' or name=='lunar') and formatt=='json':
@@ -27,8 +27,9 @@ def talk(name: str=None,formatt: str='json'):
     #    now = datetime.now(timezone.utc)
         while True:
             try:
-
+                now = datetime.now(timezone.utc)
                 states = asthor.astlo_talk(None,'y')
+                states['UTCtime'] = f'{now}'
 
                 with open('import_states.json','w',encoding='utf-8') as file: #utf-8 ensures cross platform fole compatibility, indent=4 Pretty-prints the JSON file with 4-space indentation instead of a single compact line., cls=NumpyEncoder Automatically converts NumPy scalars and arrays to serializable lists/floats from astlo the core engine.
                 #   file.write(f'{states['states_list'][0]}\n{states['states_list'][1]}\n{states['states_list'][2]}\n{states['states_list'][3]}\n{states['name']}\n{states['time_unix']}\n{states['time_simple']}\n{states['explanation']}') #with a separator of ','..the comma acts as the separato...no \n is the perfect separator..
@@ -37,9 +38,9 @@ def talk(name: str=None,formatt: str='json'):
 
                 
             
-                print(f'frequency at which file updated since UTC={now} /: {count}', end='\r') #
+                print(f'frequency at which file updated since UTC={now_print} /: UTCstated + {count} 1-minute-interval', end='\r') #
 
-                time.sleep(3600) #sleeps for onenhour then updates the txt file.
+                time.sleep(60) #sleeps for onenhour then updates the json file.
                 count += 1
             except KeyboardInterrupt:
                 raise KeyboardInterrupt('keyboard interrupt')
@@ -50,16 +51,18 @@ def talk(name: str=None,formatt: str='json'):
             
         while True:
             try:
+                now = datetime.now(timezone.utc)
 
                 states = asthor.astlo_talk(name)
+                states['UTCtime'] = f'{now}'
 
                 with open('import_states.json','w',encoding='utf-8') as file:
             #     file.write(f'{states['states_list'][0]}\n{states['states_list'][1]}\n{states['name']}\n{states['time_unix']}\n{states['time_simple']}\n{states['explanation']}')
                     json.dump(states, file, cls=NumpyEncoder, indent=4)
 
-                print(f'frequency at which file updated since UTC={now} /: {count}', end='\r')
+                print(f'frequency at which file updated since UTC={now_print} /: UTCstated + {count} 1-minute-interval', end='\r')
 
-                time.sleep(3600)
+                time.sleep(60)
                 count += 1
 
             except KeyboardInterrupt:
