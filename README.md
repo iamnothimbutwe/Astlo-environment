@@ -4,8 +4,11 @@ topocentric command in astlo requires this script for Luna, mercury, venus and S
 
 
 just enter the python IDE in the same environment and:
+
 from astlotalk import talk
 talk('sun') #or moon, venus, mercury.
+
+then use the topocentric command in astlo...
 
 
 astlo can also track the mentioned objects without needing the script
