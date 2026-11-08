@@ -1,30 +1,25 @@
 {
     "states_list": [
         [
-            -201663628.90117908,
-            280415817.85469455,
-            135888520.5033265
+            3001866723.5227895,
+            -3867594398.0531573,
+            -2111411446.305869
         ],
         [
-            -903.2925582953129,
-            -460.58265664106534,
-            -290.9570430712652
-        ],
-        [
-            -201688269.76327515,
-            280441417.7271118,
-            135899501.10726166
-        ],
-        [
-            -903.2963118191365,
-            -460.58973106288977,
-            -290.96025436760283
+            4.641994729260473,
+            2.3123779116450205,
+            -0.676993477128442
         ]
     ],
-    "name": "LUNA",
-    "explanation": "the list contains 4 items. index 0 and 1 contain the pos amd vel vectors relative EMB while index 2 and 3 contain the pos and vel states relative geocenter respectively.",
-    "time_unix": 1793527047.8338492,
-    "time_simple": "Sun Nov  1 12:57:27 2026",
-    "units": "m and m/s",
-    "UTCtime": "2026-11-01 09:57:27.787939+00:00"
+    "name": "PLUTO",
+    "explanation": "the list contains the state vectors for PLUTO relative the SSB",
+    "time_unix": 1794137326.598283,
+    "time_simple": "Sun Nov  8 14:28:46 2026",
+    "earth_states": [
+        103373391.59931985,
+        96637408.08143148,
+        41904679.97461181
+    ],
+    "units": "km and km/s",
+    "UTCtime": "2026-11-08 11:28:46.588193+00:00"
 }

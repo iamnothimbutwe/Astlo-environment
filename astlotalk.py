@@ -6,18 +6,27 @@ import os
 import json
 from datetime import datetime, timezone
 from astlo.np_encoder import NumpyEncoder
+from astlo import Contin
 import time
 
 asthor = Asho()
 console = Console()
 table = Table()
+contin = Contin()
+
 
 def talk(name: str=None,formatt: str='json'):
     '''creates the json file with the jpl state vectors and updates it every hour. if the loop is closed, astlo will not be able to the topocentric coordinates for the de440.bsp - astlohorizons - NASA JPL.''' 
     
     if name==None:
         return 'name cannot be none'
-    
+
+    name = name.upper()
+
+    if name not in contin.astlohorizons_de440_objects.keys(): #still without usimg the .keys() method attribute the dictionary would have checked correctly.
+        return f'Name: {name} not supported. try astLo'
+
+
     asthor = Asho()
     now_print = datetime.now(timezone.utc) #universal timezone
     count = 0
@@ -47,13 +56,13 @@ def talk(name: str=None,formatt: str='json'):
 
     elif name and formatt=='json':
     #    count = 0
-    
+            
             
         while True:
             try:
                 now = datetime.now(timezone.utc)
 
-                states = asthor.astlo_talk(name)
+                states = asthor.astlo_talk(name) #methof skysolsys automatically looksup the dictioanry b4 loading the files..so just apssing the normal names is ok.
                 states['UTCtime'] = f'{now}'
 
                 with open('import_states.json','w',encoding='utf-8') as file:
