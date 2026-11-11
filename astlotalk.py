@@ -16,7 +16,7 @@ contin = Contin()
 
 
 def talk(name: str=None,formatt: str='json'):
-    '''creates the json file with the jpl state vectors and updates it every hour. if the loop is closed, astlo will not be able to the topocentric coordinates for the de440.bsp - astlohorizons - NASA JPL.''' 
+    '''creates the json file with the jpl state vectors and updates it every hour. if the loop is closed, astlo will not be able to the topocentric coordinates for the de440.bsp - astlohorizons - NASA JPL. if target required is moon pass moon as name.''' 
     
     if name==None:
         return 'name cannot be none'
@@ -30,14 +30,20 @@ def talk(name: str=None,formatt: str='json'):
     asthor = Asho()
     now_print = datetime.now(timezone.utc) #universal timezone
     count = 0
+   # moons = ('moon','luna','lunar') #not making them upper cae becaude astlo handles that and also astlojorizons handles thay..
 
-    if (name=='moon' or name=='luna' or name=='lunar') and formatt=='json':
+    if (name=='MOON' or name=='LUNA' or name=='LUNAR') and formatt=='json':
        # count = 0
     #    now = datetime.now(timezone.utc)
         while True:
             try:
                 now = datetime.now(timezone.utc)
                 states = asthor.astlo_talk(None,'y')
+
+                if isinstance(states,str):
+                    print(states)
+                    return states
+
                 states['UTCtime'] = f'{now}'
 
                 with open('import_states.json','w',encoding='utf-8') as file: #utf-8 ensures cross platform fole compatibility, indent=4 Pretty-prints the JSON file with 4-space indentation instead of a single compact line., cls=NumpyEncoder Automatically converts NumPy scalars and arrays to serializable lists/floats from astlo the core engine.
@@ -54,7 +60,7 @@ def talk(name: str=None,formatt: str='json'):
             except KeyboardInterrupt:
                 raise KeyboardInterrupt('keyboard interrupt')
 
-    elif name and formatt=='json':
+    elif name and formatt=='json': #yes if name is moon it will check the first and also enter this statemnt becauee it all name. name==True get it..but after yhe keyboard interrupt which must be reached at the end of the lasy if statemnt..this mwhtod cannkt be reached even though they are supposed to execute both of them...ignore.
     #    count = 0
             
             
@@ -63,6 +69,11 @@ def talk(name: str=None,formatt: str='json'):
                 now = datetime.now(timezone.utc)
 
                 states = asthor.astlo_talk(name) #methof skysolsys automatically looksup the dictioanry b4 loading the files..so just apssing the normal names is ok.
+
+                if isinstance(states,str):
+                    print(states) #fkr tge cli amd also sdk..
+                    return states
+
                 states['UTCtime'] = f'{now}'
 
                 with open('import_states.json','w',encoding='utf-8') as file:
