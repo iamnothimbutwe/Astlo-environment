@@ -103,5 +103,34 @@ def talk(name: str=None,formatt: str='json'):
 
 #####STICK WITH JSOJ FIL only because txt files require string files and jaon files any data type can be passed
 
+def talk2():
+    '''writes to import_states for all the objects that de440 supports. a total of '''
+
+    asho = Asho()
+    #now = datetime.now(timezone.utc)
+    
+    objects = {} #using name as dictionary key and value as the pos states and a utctime..
+    for i in contin.astlohorizons_de440_objects.keys():
+        now = datetime.now(timezone.utc)
+        if i=='MOON':
+            obj_states = asho.astlo_talk(None,'y')
+            obj_pos_vectors = obj_states['states_list'][0] #luna relative EMB_m
+        else:
+            obj_states = asho.astlo_talk(i,None)
+            obj_posto_m = []
+            for x in obj_states['states_list'][0]:
+                obj_posto_m.append(x*1000) #m
+                
+            obj_pos_vectors = obj_posto_m #pos vector..should later convert to m
+
+      #  obj_pos_vectors.append(f'{now}')
+        objects[i] = obj_pos_vectors
+    objects['UTCtime'] = f'{now}'
+
+    with open('import_states.json','w',encoding='utf-8') as file:
+
+        json.dump(objects,file,cls=NumpyEncoder,indent=4)
+
+    print(f'Completed writing to json file for all the objects supported. UTCtime: {now}')
 
 

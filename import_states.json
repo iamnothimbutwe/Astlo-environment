@@ -1,30 +1,21 @@
 {
     "states_list": [
         [
-            -85249194.31667699,
-            -348110352.2959923,
-            -186367090.08742744
+            90782697.85189444,
+            106451250.61441836,
+            46158527.857934155
         ],
         [
-            948.0293531849655,
-            -221.46554743553455,
-            -62.304517222437426
-        ],
-        [
-            -85278752.60484314,
-            -348086771.9394989,
-            -186356822.90356445
-        ],
-        [
-            948.0247119923733,
-            -221.4683050132262,
-            -62.305415724874365
+            -23.98800681165794,
+            16.68953482548181,
+            7.2334875408122095
         ]
     ],
-    "name": "LUNA",
-    "explanation": "the list contains 4 items. index 0 and 1 contain the pos amd vel vectors relative EMB while index 2 and 3 contain the pos and vel states relative geocenter respectively.",
-    "time_unix": 1794429365.8009336,
-    "time_simple": "Wed Nov 11 23:36:05 2026",
-    "units": "m and m/s",
-    "UTCtime": "2026-11-11 20:36:05.790475+00:00"
+    "name": "EARTH",
+    "explanation": "the list contains the state vectors for EARTH relative the SSB",
+    "time_unix": 1794686693.615177,
+    "time_simple": "Sat Nov 14 23:04:53 2026",
+    "earth_states": "None because EARTH was passed as the object name",
+    "units": "km and km/s",
+    "UTCtime": "2026-11-14 20:04:53.589206+00:00"
 }
