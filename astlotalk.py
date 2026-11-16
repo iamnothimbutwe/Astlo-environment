@@ -114,7 +114,7 @@ def talk2():
         now = datetime.now(timezone.utc)
         if i=='MOON':
             obj_states = asho.astlo_talk(None,'y')
-            obj_pos_vectors = obj_states['states_list'][0] #luna relative EMB_m
+            obj_pos_vectors = obj_states['states_list'][4] #luna relative ssb_m
         else:
             obj_states = asho.astlo_talk(i,None)
             obj_posto_m = []
